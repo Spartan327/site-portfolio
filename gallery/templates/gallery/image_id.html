@@ -1,0 +1,43 @@
+{% extends "gallery/base.html" %}
+{% block title %}Редактирование работы{% endblock %}
+{% block pagename %}{{ image.title }}{% endblock %}
+{% block content %}
+
+<figure>
+    <figcaption>
+        Название работы: {{ image.title }}
+        Описание: {{ image.description }}
+        Облако тегов:{% for tag in image.tags.all %}
+        <a href="{% url 'by_tag' tag.title %}">{{ tag.title }}</a>
+
+        {% endfor %}
+        Дата публикации: {{ image.published|date:"d.m.Y H:i:s" }}
+    </figcaption>
+    <img src="/media/{{ image.image }}">
+</figure>
+<form method="POST">
+    {% csrf_token %}
+    <label>Название работы:</label>
+    <input type="text" value="{{ image.title }}" name="title">
+    <label>Описание:</label>
+    <textarea name="description">{{ image.description }}</textarea>
+    <label>Теги работы:</label>
+    <select multiple="multiple" name="tags">
+        {% for tag in image.tags.all %}
+        <option>{{ tag.title }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Существующие теги:</label>
+    <select multiple="multiple" name="new_tags">
+        {% for tag in tags %}
+        <option>{{ tag.title }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Изменить</button>
+    <button type="submit" name="delete_image">Удалить</button>
+</form>
+
+
+{% endblock %}
