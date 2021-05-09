@@ -25,12 +25,24 @@ def by_tag(request, tag):
 class VectorDrawingCreateView(CreateView):
     template_name = 'gallery/add.html'
     form_class = VectorDrawingForm
-    success_url = reverse_lazy('index')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
         return context
+    
+    def form_valid(self, form):
+        """If the form is valid, save the associated model."""
+        self.object = form.save()
+        t = []
+        new_tag_list = self.request.POST.get('new_tags').split('; ')
+        if new_tag_list:
+            for tag in new_tag_list:
+                t.append(Tag.objects.create(title=tag))
+            for tag in t:
+                if not tag in self.object.tags.all():
+                    self.object.tags.add(tag)
+        return redirect(index)
 
 
 def image_id(request, pk):
@@ -48,6 +60,11 @@ def image_id(request, pk):
             image.save()
             return redirect(image_id, pk)
         image = VectorDrawing.objects.get(id=pk)
+        for tag in image.tags.all():
+            print(tag.title)
+            print(tag.entries.all().count())
+            if tag.entries.all().count() == 1:
+                tag.delete()
         image.delete()
         return redirect(index)
     else:
@@ -58,7 +75,3 @@ def image_id(request, pk):
             'tags': tags,
         }
         return render(request, 'gallery/image_id.html', context)
-
-
-def image_id_delete(request):
-    pass

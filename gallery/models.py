@@ -22,7 +22,7 @@ class VectorDrawing(models.Model):
     image = models.ImageField(
         verbose_name='Изображение',
     )
-    tags = models.ManyToManyField(Tag, verbose_name='Теги', related_name='entries')
+    tags = models.ManyToManyField(Tag, verbose_name='Теги', related_name='entries', blank=True)
 
     class Meta:
         verbose_name_plural = 'Векторные рисунки'
