@@ -1,0 +1,16 @@
+{% extends "gallery/base.html" %}
+{% block title %}Вход{% endblock %}
+{% block pagename %}Вход{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h2>Вы уже вошли на сайт</h2>
+{% else %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="text" value="{{ next }}">
+        <input type="submit" value="Войти">
+        <a href="{% url 'social:begin' 'vk-oauth2' %}">Войти через VK</a>
+    </form>
+{% endif %}
+{% endblock %}

@@ -4,16 +4,18 @@
 {% block content %}
 {% for image in images %}
 <figure>
+    <a href="{% url 'image_id' image.id %}"><img src="/media/{{ image.image }}"></a>
     <figcaption>
-        Название работы: {{ image.title }}
-        Описание: {{ image.description }}
-        Облако тегов:{% for tag in image.tags.all %}
+        <!-- Название работы: {{ image.title }}
+        Описание: {{ image.description }} -->
+        {% for tag in image.tags.all %}
         <a href="{% url 'by_tag' tag.title %}">{{ tag.title }}</a>
 
         {% endfor %}
-        Дата публикации: {{ image.published|date:"d.m.Y H:i:s" }}
+        <!-- 
+        Дата публикации: {{ image.published|date:"d.m.Y H:i:s" }} -->
     </figcaption>
-    <a href="{% url 'image_id' image.id %}"><img src="/media/{{ image.image }}"></a>
+    
 </figure>
 {% endfor %}
 {% endblock %}

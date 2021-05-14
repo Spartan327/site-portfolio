@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'gallery.apps.GalleryConfig',
     'django_cleanup',
     'easy_thumbnails',
+    'social_django',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -121,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -140,3 +145,15 @@ THUMBNAIL_ALIASES = {
 }
 
 THUMBNAIL_BASEDIR = 'thumbnails'
+
+LOGIN_REDIRECT_URL = '/gallery'
+
+LOGOUT_REDIRECT_URL = '/gallery'
+
+AUTHENTICATION_BACKENDS = {
+    'social_core.backends.vk.VKOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+}
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '7796540'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = 'S7UbtDpSNmw9dBTyUKj4'
