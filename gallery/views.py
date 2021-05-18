@@ -11,11 +11,14 @@ class GalleryView(ListView):
     template_name = 'gallery/index.html'
     model = VectorDrawing
     context_object_name = 'images'
+    paginate_by = 6
 
 
 class GalleryByTagView(ListView):
     template_name = 'gallery/index.html'
     context_object_name = 'images'
+    paginate_by = 6
+
 
     def get_queryset(self):
         return VectorDrawing.objects.filter(tags__title=self.kwargs['tag'])

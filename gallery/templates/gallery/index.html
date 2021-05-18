@@ -1,21 +1,36 @@
 {% extends "gallery/base.html" %}
 {% block title %}Галеря{% endblock %}
-{% block pagename %}Галеря работ{% endblock %}
 {% block content %}
-{% for image in images %}
-<figure>
-    <a href="{% url 'image_id' image.id %}"><img src="/media/{{ image.image }}"></a>
-    <figcaption>
-        <!-- Название работы: {{ image.title }}
-        Описание: {{ image.description }} -->
-        {% for tag in image.tags.all %}
-        <a href="{% url 'by_tag' tag.title %}">{{ tag.title }}</a>
 
+<div class="content">
+    {% if page_obj.has_previous %}
+    <div class="pagination_previous">
+        <!-- <a href="?page=1">first</a> -->
+        <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+    </div>
+    {% endif %}
+    <section>
+        {% for image in images %}
+        <figure>
+            <a href="{% url 'image_id' image.id %}"><img src="/media/{{ image.image }}"></a>
+            <figcaption>
+                <!-- Название работы: {{ image.title }}
+                Описание: {{ image.description }} -->
+                {% for tag in image.tags.all %}
+                <a href="{% url 'by_tag' tag.title %}">{{ tag.title }}</a>
+
+                {% endfor %}
+                <!-- 
+                Дата публикации: {{ image.published|date:"d.m.Y H:i:s" }} -->
+            </figcaption>
+        </figure>
         {% endfor %}
-        <!-- 
-        Дата публикации: {{ image.published|date:"d.m.Y H:i:s" }} -->
-    </figcaption>
-    
-</figure>
-{% endfor %}
+    </section>
+    {% if page_obj.has_next %}
+    <div class="pagination_next">
+        <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+        <!-- <a href="?page={{ page_obj.paginator.num_pages }}">last</a> -->
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

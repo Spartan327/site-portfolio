@@ -1,11 +1,11 @@
 {% extends "gallery/base.html" %}
 {% block title %}Добавление работы{% endblock %}
-{% block pagename %}Добавление работы{% endblock %}
 {% block content %}
-
+<div class="add">
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Добавить</button>
     </form>
+</div>
 {% endblock %}

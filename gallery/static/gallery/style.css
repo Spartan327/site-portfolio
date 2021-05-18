@@ -84,6 +84,7 @@ body {
 
 section {
     text-align: center;
+    margin-top: 10px;
 }
 figure {
     display: inline-block;
@@ -117,7 +118,72 @@ figcaption {
 }
 
 nav {
+    text-align: center;
     background-color: #222;
     color: #c0c0c0;
+    height: 50px;
+    padding-top: 10px;
 }
 
+label {
+  display: block;
+
+}
+
+input, textarea, select {
+  background-color:rgb(141, 118, 163);
+  border: 3px solid #222;
+  padding: 10px 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline:none;
+}
+
+textarea{
+  width: 400px;
+  height: 100px;
+}
+
+div.add{
+  margin-left: 10px;
+}
+
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
+a.nav_button {
+  border: 3px solid rgb(132, 91, 173);
+  background-color: rgb(132, 91, 173);
+  color: #222;
+  border-radius: 5px;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+}
+
+a.nav_button:hover {
+  background-color:#222;
+  color: rgb(132, 91, 173);
+  
+}
+
+.content{
+  display: inline-block;
+}
+
+.pagination_next, .pagination_previous{
+  
+  border: 3px solid #222;
+  background-color: rgb(132, 91, 173);
+  color: #222;
+  border-radius: 5px;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  width: 100px;
+}

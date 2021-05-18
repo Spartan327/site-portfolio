@@ -21,6 +21,7 @@ class VectorDrawing(models.Model):
         auto_now_add=True, db_index=True, verbose_name='Дата публикации')
     image = models.ImageField(
         verbose_name='Изображение',
+        upload_to='gallery/'
     )
     tags = models.ManyToManyField(Tag, verbose_name='Теги', related_name='entries', blank=True)
 
