@@ -1,3 +1,4 @@
+
 /* Указываем box sizing */
 *,
 *::before,
@@ -77,31 +78,44 @@ select {
   }
 }
 
+/*------------------------------------------------------------------------------------*/
+
+html {
+  overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
+}
+
 body {
     background-color:rgb(132, 91, 173);
     font-family: 'Hind', sans-serif;
+    min-width: 500px;
 }
 
-section {
-    text-align: center;
-    margin-top: 10px;
-}
+
 figure {
-    display: inline-block;
-    flex-flow: column;
+    display:inline-block;
     padding: 5px;
     max-width: 400px;
     margin: 5px;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5px;
     background-color: #222;
     
 }
 
+
+.image_id figure{
+  display: block;
+  max-width: 90%;
+  margin: 5px;
+  border-radius: 5px;
+  background-color: #222;
+  margin: 15px auto
+}
+
+
+
 a img {
     max-width: 390px;
-    border-radius: 5px 5px 5px 5px;
-
-    
 }
 a img:hover {
     opacity:0.5;
@@ -114,7 +128,6 @@ figcaption {
     padding: 3px;
     text-align: center;
     border-radius: 5px 5px 0 0;
-    
 }
 
 nav {
@@ -123,17 +136,17 @@ nav {
     color: #c0c0c0;
     height: 50px;
     padding-top: 10px;
+    
 }
 
 label {
   display: block;
-
 }
 
 input, textarea, select {
   background-color:rgb(141, 118, 163);
   border: 3px solid #222;
-  padding: 10px 10px;
+  padding: 10px;
   margin: 10px 0;
   box-sizing: border-box;
   border-radius: 5px;
@@ -146,44 +159,134 @@ textarea{
 }
 
 div.add{
-  margin-left: 10px;
-}
-
-html {
-  overflow-x: hidden;
-  margin-right: calc(-1 * (100vw - 100%));
+  margin-top: 10px;
+  margin-left: 5%;
 }
 
 a.nav_button {
   border: 3px solid rgb(132, 91, 173);
-  background-color: rgb(132, 91, 173);
-  color: #222;
+  background-color:#222;
+  color: rgb(132, 91, 173);
+  text-shadow: 1px 1px 10px rgb(132, 91, 173);
+
   border-radius: 5px;
   margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
   text-decoration: none;
+  
 }
 
 a.nav_button:hover {
-  background-color:#222;
-  color: rgb(132, 91, 173);
   
-}
-
-.content{
-  display: inline-block;
-}
-
-.pagination_next, .pagination_previous{
-  
-  border: 3px solid #222;
+  border: 3px solid rgb(132, 91, 173);
   background-color: rgb(132, 91, 173);
   color: #222;
+  text-shadow: 1px 1px 10px #222;
+}
+
+.pagination_next a:hover, .pagination_previous a:hover{
+  background-color:#222;
+  color: rgb(132, 91, 173);
+  text-shadow: 1px 1px 10px rgb(132, 91, 173);
+}
+
+.pagination_next a, .pagination_previous a{
+  border: 3px solid #222;
   border-radius: 5px;
-  margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
   text-decoration: none;
-  width: 100px;
+  display: table-cell;
+  vertical-align: middle;
+  text-shadow: 1px 1px 10px #222;
+}
+
+.pagin{
+  height: 100%;
+  display: table;
+}
+
+.pagination_next_plug a, .pagination_previous_plug a{
+  border: 3px solid rgb(132, 91, 173);
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  display: table-cell;
+  vertical-align: middle;
+  pointer-events: none; /* делаем элемент неактивным для взаимодействия */
+  cursor: default; /*  курсор в виде стрелки */
+  color: rgb(132, 91, 173);/* цвет текста серый */
+}
+
+.pagin_plug{
+  height: 100%;
+  display: table;
+}
+
+.b-flex {
+  display: flex;
+  margin: 10px 20px 0 20px;
+  justify-content: center;
+}
+
+.content{
+  max-width: 1240px;
+  margin: 0 auto;
+  
+}
+
+
+
+.input_button, button{
+  padding: 0 10px;
+  border: 3px solid #222;
+  background-color: rgb(132, 91, 173);
+  color: #222;
+  text-shadow: 1px 1px 10px #222;
+  border-radius: 5px;
+}
+.input_button:hover, button:hover{
+  border: 3px solid #222;
+  background-color:#222;
+  color: rgb(132, 91, 173);
+  text-shadow: 1px 1px 10px rgb(132, 91, 173);
+}
+
+div.input_button{
+  display: inline-block;
+  border-radius: 5px;
+  padding: 0 10px;
+  margin: 10px;
+  
+}
+
+.input_button a{
+  text-decoration: none;
+  outline:none;
+  color: inherit;
+}
+
+.login{
+  text-align: center;
+  margin-top: 10%;
+}
+
+.tag{
+  display: inline;
+  
+}
+
+.tag:hover{
+  text-shadow: 1px 1px 10px rgb(132, 91, 173);
+}
+
+.tag a{
+  color: rgb(132, 91, 173);
+  text-decoration: none;
+}
+
+.change_fields{
+  padding-left: 5%;
 }

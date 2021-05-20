@@ -2,35 +2,53 @@
 {% block title %}Галеря{% endblock %}
 {% block content %}
 
-<div class="content">
+<div class="b-flex">
     {% if page_obj.has_previous %}
     <div class="pagination_previous">
         <!-- <a href="?page=1">first</a> -->
-        <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+        <div class="pagin">
+            <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="pagination_previous_plug">
+        <div class="pagin_plug">
+            <a href="#">&laquo;</a>
+        </div>
     </div>
     {% endif %}
-    <section>
+    <div class="content">
         {% for image in images %}
         <figure>
             <a href="{% url 'image_id' image.id %}"><img src="/media/{{ image.image }}"></a>
             <figcaption>
                 <!-- Название работы: {{ image.title }}
-                Описание: {{ image.description }} -->
+                    Описание: {{ image.description }} -->
                 {% for tag in image.tags.all %}
-                <a href="{% url 'by_tag' tag.title %}">{{ tag.title }}</a>
-
+                <div class="tag">
+                    <a href="{% url 'by_tag' tag.title %}">| {{ tag.title }} |</a>
+                </div>
                 {% endfor %}
                 <!-- 
-                Дата публикации: {{ image.published|date:"d.m.Y H:i:s" }} -->
+                    Дата публикации: {{ image.published|date:"d.m.Y H:i:s" }} -->
             </figcaption>
         </figure>
         {% endfor %}
-    </section>
+    </div>
     {% if page_obj.has_next %}
     <div class="pagination_next">
-        <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
-        <!-- <a href="?page={{ page_obj.paginator.num_pages }}">last</a> -->
+        <div class="pagin">
+            <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+            <!-- <a href="?page={{ page_obj.paginator.num_pages }}">last</a> -->
+        </div>
+    </div>
+    {% else %}
+    <div class="pagination_next_plug">
+        <div class="pagin_plug">
+            <a href="#">&raquo;</a>
+        </div>
     </div>
     {% endif %}
 </div>
+
 {% endblock %}
