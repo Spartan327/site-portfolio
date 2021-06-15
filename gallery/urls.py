@@ -2,6 +2,7 @@ from django.urls import path
 
 from .views import image_id, VectorDrawingCreateView, GalleryView, GalleryByTagView
 
+app_name = 'gallery'
 urlpatterns = [
     #path('', index, name='index'),
     path('', GalleryView.as_view(), name='index'),

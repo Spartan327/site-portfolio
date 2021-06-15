@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Tag, VectorDrawing
+from .models import Tag, VectorDrawing, Comment
 
 
 class VectorDrawingAdmin(admin.ModelAdmin):
@@ -17,3 +17,4 @@ class TagDrawingAdmin(admin.ModelAdmin):
 
 admin.site.register(VectorDrawing, VectorDrawingAdmin)
 admin.site.register(Tag, TagDrawingAdmin)
+admin.site.register(Comment)

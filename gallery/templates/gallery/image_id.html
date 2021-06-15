@@ -6,6 +6,7 @@
         <img src="/media/{{ image.image }}">
     </figure>
 </div>
+{% if 'gallery.change_vectordrawing' in perms %}
 <div class="change_fields">
     <form method="POST">
         {% csrf_token %}
@@ -32,6 +33,7 @@
         </p>
     </form>
 </div>
+{% endif %}
 
 
 {% endblock %}

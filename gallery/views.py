@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
@@ -19,15 +20,16 @@ class GalleryByTagView(ListView):
     context_object_name = 'images'
     paginate_by = 6
 
-
     def get_queryset(self):
         return VectorDrawing.objects.filter(tags__title=self.kwargs['tag'])
 
 
-class VectorDrawingCreateView(CreateView):
+class VectorDrawingCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     template_name = 'gallery/add.html'
     form_class = VectorDrawingForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('gallery:index')
+    login_url = "/login"
+    permission_required = ('gallery.add_vectordrawing')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -50,7 +52,7 @@ class VectorDrawingCreateView(CreateView):
 
 
 def image_id(request, pk):
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('gallery:index')
     if request.method == 'POST':
         if not 'delete_image' in request.POST:
             image = VectorDrawing.objects.get(id=pk)

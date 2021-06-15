@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -23,7 +24,10 @@ class VectorDrawing(models.Model):
         verbose_name='Изображение',
         upload_to='gallery/'
     )
-    tags = models.ManyToManyField(Tag, verbose_name='Теги', related_name='entries', blank=True)
+    vector_file = models.FileField(
+        upload_to='vector_files/', null=True, blank=True, verbose_name='Векторный рисунок')
+    tags = models.ManyToManyField(
+        Tag, verbose_name='Теги', related_name='entries', blank=True)
 
     class Meta:
         verbose_name_plural = 'Векторные рисунки'
@@ -32,3 +36,13 @@ class VectorDrawing(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    author = models.OneToOneField(User, on_delete=models.CASCADE)
+    message = models.TextField(max_length=500)
+    vector_drawing = models.ForeignKey(
+        VectorDrawing,
+        related_name="comment",
+        on_delete=models.CASCADE,
+    )
