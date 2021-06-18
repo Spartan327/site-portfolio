@@ -91,15 +91,38 @@ body {
 }
 
 figure {
-    display:inline-block;
+    float: left;
     padding: 5px;
-    max-width: 400px;
+    width: 400px;
+    height: 250px;
     margin: 5px;
     border-radius: 5px;
     background-color: #222;
+    overflow:hidden; /* this is important */
+  	position:relative; /* this is important too */
+}
+
+
+a img {
+  position:absolute;
+  max-width: 390px;
+  
+}
+a img:hover {
+    opacity:0.5;
     
 }
 
+figcaption {
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+ 
+  height: 35px;
+  position: relative;
+  top: 210px
+  
+}
 
 
 
@@ -114,22 +137,7 @@ figure {
 
 
 
-a img {
-    max-width: 390px;
-    max-height: 350px;
-}
-a img:hover {
-    opacity:0.5;
-    
-}
 
-figcaption {
-    background-color: #222;
-    color: #fff;
-    padding: 3px;
-    text-align: center;
-    border-radius: 5px 5px 0 0;
-}
 
 nav {
     text-align: center;
