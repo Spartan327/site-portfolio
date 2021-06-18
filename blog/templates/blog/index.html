@@ -1,6 +1,22 @@
 {% extends "gallery/base.html" %}
 {% block title %}Профиль{% endblock %}
 {% block content %}
-{{ profile.info }}
-{{ profile.social_links }}
+<div class="about_me">
+    {% if user.is_authenticated %}
+    <span>
+        {% if user.get_full_name %}
+        {{ user.get_full_name }}
+        {% else %}
+        {{ user.get_username }}
+        {% endif %}
+        {% else %}
+        Гость
+        {% endif %}
+    </span>
+    {{ profile.info }}
+    <p>Связь со мной:</p>
+    {% for link in profile.get_links %}
+    <p><a href="{{ link }}">{{ link }}</a></p>
+    {%endfor%}
+</div>
 {% endblock %}

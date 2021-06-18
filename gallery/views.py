@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
 
@@ -30,7 +30,8 @@ class VectorDrawingCreateView(LoginRequiredMixin, PermissionRequiredMixin, Creat
     success_url = reverse_lazy('gallery:index')
     login_url = "/login"
     permission_required = ('gallery.add_vectordrawing')
-
+    raise_exception = True
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tags'] = Tag.objects.all()
@@ -52,7 +53,7 @@ class VectorDrawingCreateView(LoginRequiredMixin, PermissionRequiredMixin, Creat
 
 
 def image_id(request, pk):
-    success_url = reverse_lazy('gallery:index')
+    success_url = reverse('gallery:index')
     if request.method == 'POST':
         if not 'delete_image' in request.POST:
             image = VectorDrawing.objects.get(id=pk)
@@ -65,7 +66,7 @@ def image_id(request, pk):
                 tag_list.append(Tag.objects.get(title=tag))
             image.tags.set(tag_list)
             image.save()
-            return redirect(image_id, pk)
+            return redirect('gallery:image_id', pk=pk)
         image = VectorDrawing.objects.get(id=pk)
         for tag in image.tags.all():
             if tag.entries.all().count() == 1:

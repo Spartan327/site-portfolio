@@ -9,5 +9,5 @@ class ProfileView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['profile'] = Profile.objects.get(user=User.objects.get(username='id54678191'))
+        context['profile'] = Profile.objects.get(user=User.objects.get(username='Tina'))
         return context

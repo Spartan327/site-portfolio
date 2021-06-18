@@ -2,9 +2,7 @@
 {% block title %}Редактирование работы{% endblock %}
 {% block content %}
 <div class="image_id">
-    <figure>
-        <img src="/media/{{ image.image }}">
-    </figure>
+    <img src="/media/{{ image.image }}">
 </div>
 {% if 'gallery.change_vectordrawing' in perms %}
 <div class="change_fields">
