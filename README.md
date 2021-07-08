@@ -11,9 +11,9 @@
 - авторизация зарегистрированных пользователей;
 - авторизация через соц.сеть вконтакте.
 
-![Image alt](screenshots/galley.png "Страница галереи работ")
+![Image alt](screenshots/gallery.png "Страница галереи работ")
 ![Image alt](screenshots/about_me.png "Главная")
 ![Image alt](screenshots/add_paint.png "Страница добавления работы")
 ![Image alt](screenshots/auth.png "Страница входа")
-![Image alt](screenshots/chahge_paint.png "Страница редактирования работы")
-![Image alt](screenshots/chahge_paint2.png)
+![Image alt](screenshots/change_paint.png "Страница редактирования работы")
+![Image alt](screenshots/change_paint2.png)
