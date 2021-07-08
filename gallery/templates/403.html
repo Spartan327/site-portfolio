@@ -1,5 +1,6 @@
 {% extends "gallery/base.html" %}
-{% block title %}Профиль{% endblock %}
+{% block title %}Галеря{% endblock %}
+
 {% block content %}
 <div class="about_me">
 
@@ -12,12 +13,6 @@
     {% else %}
     <span>Гость,</span>
     {% endif %}
-    {{ profile.info }}
-    <div class="links">
-        <p>Связь со мной:</p>
-        {% for link in profile.get_links %}
-        <p><a href="{{ link }}">{{ link }}</a></p>
-        {% endfor %}
-    </div>
+    у вас нет соответствующих разрешений для добавления новых работ!
 </div>
 {% endblock %}

@@ -85,73 +85,96 @@ html {
 }
 
 body {
-    background-color:rgb(132, 91, 173);
-    font-family: 'Hind', sans-serif;
+    background-color:#fae8d3;
+    font-family: 'Lobster', cursive;
     min-width: 500px;
 }
 
 figure {
-    display:inline-block;
-    padding: 5px;
-    max-width: 400px;
-    margin: 5px;
-    border-radius: 5px;
-    background-color: #222;
-    
+    display: inline-block;
+    width: 400px;
+    height: 250px;
+    overflow: hidden; /* this is important */
+  	position: relative; /* this is important too */
+}
+
+a img {
+  object-fit: cover; /* Запрещаем масштабирование изображения */
+  object-position: center; /* Центрируем картинку от центра */
+  height: 250px;
+  width: 400px;
+  
+}
+
+figcaption {
+  opacity: 0;
+  position: absolute;
+  width: 400px;
+  text-align: center;
+  top: 45%;
 }
 
 
+figure:hover > a img {
+  opacity: 0.3;
+}
 
+figure:hover > figcaption {
+  opacity: 1;
+}
+
+
+.tag {
+  display: inline;
+}
+
+.tag a{
+  font-size: 25px;
+  margin: 10px;
+  color: #726c61;
+  text-decoration: none;
+  text-shadow: 1px 1px 10px #FFF;
+  
+}
+
+.tag a:hover{
+  color: #FFA100;
+  opacity: 1;
+}
 
 .image_id img{
   display: block;
   max-width: 70%;
-  background-color: rgb(255, 255, 255);
-  padding: 30px;
-  border-radius: 5px;
+  background-color: #726c61;
+  padding: 10px;
+  border-radius: 2px;
   margin: 15px auto;
 }
 
-
-
-a img {
-    max-width: 390px;
-    max-height: 350px;
-}
-a img:hover {
-    opacity:0.5;
-    
-}
-
-figcaption {
-    background-color: #222;
-    color: #fff;
-    padding: 3px;
-    text-align: center;
-    border-radius: 5px 5px 0 0;
-}
-
 nav {
-    text-align: center;
-    background-color: #222;
-    color: #c0c0c0;
-    height: 50px;
-    padding-top: 10px;
-    
+  text-align: center;
+  height: 50px;
+  padding-top: 10px;
 }
 
 label {
   display: block;
+  color: #726c61;
+}
+
+p span {
+  color: #726c61;
 }
 
 input, textarea, select {
-  background-color:rgb(141, 118, 163);
-  border: 3px solid #222;
+  background-color:#fae8d3;
+  border: 3px solid #726c61;
   padding: 10px;
   margin: 10px 0;
   box-sizing: border-box;
-  border-radius: 5px;
+  border-radius: 2px;
   outline:none;
+  color: #726c61;
 }
 
 textarea{
@@ -165,12 +188,7 @@ div.add{
 }
 
 a.nav_button {
-  border: 3px solid rgb(132, 91, 173);
-  background-color:#222;
-  color: rgb(132, 91, 173);
-  text-shadow: 1px 1px 10px rgb(132, 91, 173);
-
-  border-radius: 5px;
+  color: #726c61;
   margin: 10px;
   padding-left: 10px;
   padding-right: 10px;
@@ -178,28 +196,27 @@ a.nav_button {
 }
 
 a.nav_button:hover {
-  
-  border: 3px solid rgb(132, 91, 173);
-  background-color: rgb(132, 91, 173);
-  color: #222;
-  text-shadow: 1px 1px 10px #222;
+  color: #FFA100;
 }
 
 .pagination_next a:hover, .pagination_previous a:hover{
-  background-color:#222;
-  color: rgb(132, 91, 173);
-  text-shadow: 1px 1px 10px rgb(132, 91, 173);
+  border: 2px solid #726c61;
+  background-color: #726c61;
+  color: #FFA100;
+  border-radius: 2px;
+
 }
 
 .pagination_next a, .pagination_previous a{
-  border: 3px solid #222;
-  border-radius: 5px;
+  border: 2px solid #fae8d3;
+  border-radius: 2px;
   padding-left: 10px;
   padding-right: 10px;
   text-decoration: none;
   display: table-cell;
   vertical-align: middle;
-  text-shadow: 1px 1px 10px #222;
+  color: #726c61;
+  font-weight: bold;
 }
 
 .pagin{
@@ -208,8 +225,7 @@ a.nav_button:hover {
 }
 
 .pagination_next_plug a, .pagination_previous_plug a{
-  border: 3px solid rgb(132, 91, 173);
-  border-radius: 5px;
+  border: 2px solid #fae8d3;
   padding-left: 10px;
   padding-right: 10px;
   text-decoration: none;
@@ -217,7 +233,7 @@ a.nav_button:hover {
   vertical-align: middle;
   pointer-events: none; /* делаем элемент неактивным для взаимодействия */
   cursor: default; /*  курсор в виде стрелки */
-  color: rgb(132, 91, 173);/* цвет текста серый */
+  color: #fae8d3;;/* цвет текста серый */
 }
 
 .pagin_plug{
@@ -227,37 +243,36 @@ a.nav_button:hover {
 
 .b-flex {
   display: flex;
-  margin: 10px 20px 0 20px;
-  justify-content: center;
+  margin: 20px 20px 0 20px;
+  justify-content:space-between;
 }
 
 .content{
-  max-width: 1240px;
-  margin: 0 auto;
-  
+  max-width: 1209px;
+
 }
 
 .input_button, button{
   padding: 0 10px;
-  border: 3px solid #222;
-  background-color: rgb(132, 91, 173);
-  color: #222;
-  text-shadow: 1px 1px 10px #222;
-  border-radius: 5px;
+  margin: 0 0 10px 0;
+  border: 2px solid #fae8d3;
+  background-color: #fae8d3;
+  color: #726c61;
+  border-radius: 2px;
 }
+
 .input_button:hover, button:hover{
-  border: 3px solid #222;
-  background-color:#222;
-  color: rgb(132, 91, 173);
-  text-shadow: 1px 1px 10px rgb(132, 91, 173);
+  border: 2px solid #726c61;
+  background-color:#726c61;
+  color: #FFA100;
+
 }
 
 div.input_button{
   display: inline-block;
-  border-radius: 5px;
+  border-radius: 2px;
   padding: 0 10px;
   margin: 10px;
-  
 }
 
 .input_button a{
@@ -271,30 +286,35 @@ div.input_button{
   margin-top: 10%;
 }
 
-.tag{
-  display: inline;
-  
-}
-
-.tag:hover{
-  text-shadow: 1px 1px 10px rgb(132, 91, 173);
-}
-
-.tag a{
-  color: rgb(132, 91, 173);
-  text-decoration: none;
-}
-
 .change_fields{
   padding-left: 5%;
 }
 
-.about_me{
-  display: block;
-  margin: 15px;
+
+
+.about_me span{
+  font-size: 30px;
+  text-transform: capitalize;
 }
 
-span{
-  color: rgba(202, 17, 17, 0.589);
-  font-weight: bold;
+
+.about_me {
+  display: block;
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: justify;
+  line-height: 40px;
+}
+
+.about_me p a {
+  text-decoration: none;
+  color: #726c61;
+}
+
+.about_me p a:hover {
+  color: #FFA100;
+}
+
+.links {
+  display: block;
 }
