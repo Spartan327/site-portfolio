@@ -30,3 +30,7 @@
 `poetry install`  
 `poetry run python manage.py runserver` или `poetry run python3 manage.py runserver`
 - перейти по адресу (http://127.0.0.1:8000/)
+
+Для входа от имени админиcтратора используйте следующие учетные данные  
+логин: `admin`  
+пароль: `QAZwsx00`
