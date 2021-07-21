@@ -20,7 +20,7 @@
     <div class="content">
         {% for image in images %}
         <figure>
-            <a href="{% url 'gallery:image_id' image.id %}"><img src='/media/{{ image.image }}'></a>
+            <a href="{% url 'gallery:image_id' image.id %}"><img src="{{ image.description }}"></a>
             <figcaption>
                 <!-- Название работы: {{ image.title }}
                     Описание: {{ image.description }} -->
