@@ -1,4 +1,5 @@
 {% extends "gallery/base.html" %}
+{% load static %}
 {% block title %}Галеря{% endblock %}
 {% block content %}
 
@@ -20,7 +21,7 @@
     <div class="content">
         {% for image in images %}
         <figure>
-            <a href="{% url 'gallery:image_id' image.id %}"><img src="{% static '/media/dino12312312.jpg' %}"></a>
+            <a href="{% url 'gallery:image_id' image.id %}"><img src="{% static 'media/{{ image.image }}' %}"></a>
             <figcaption>
                 <!-- Название работы: {{ image.title }}
                     Описание: {{ image.description }} -->
