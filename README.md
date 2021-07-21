@@ -20,7 +20,9 @@
 ![Image alt](screenshots/change_paint.png "Страница редактирования работы")
 ![Image alt](screenshots/change_paint2.png)
 
+Проект доступен по ссылке https://limitless-savannah-94517.herokuapp.com/
+
 Для локального развертывания необходимо:
-- клонировать проект;
+- клонировать проект из ветки local-version;
 - установить Poetry (https://python-poetry.org/docs/#installation);
 - выполнить команду:
