@@ -23,10 +23,10 @@
 Для локального развертывания необходимо:
 - установить Python (https://www.python.org/downloads/);
 - установить Poetry (https://python-poetry.org/docs/#installation);
-- клонировать проект командой:
-    git clone https://github.com/Spartan327/site-portfolio.git
+- клонировать проект командой:  
+`git clone https://github.com/Spartan327/site-portfolio.git`
 - перейти в ветвь local-version в директории проекта и выполнить команды:
-    git checkout local-version
-    poetry install
-    poetry run python manage.py runserver или poetry run python3 manage.py runserver
+```git checkout local-version  
+poetry install  
+poetry run python manage.py runserver или poetry run python3 manage.py runserver```
 - перейти по адресу http://127.0.0.1:8000/
